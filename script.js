@@ -21,7 +21,6 @@ function getHumanChoice() {
   if (humanChoice !== "ROCK" && humanChoice !== "PAPER" && humanChoice !== "SCISSORS") {
     humanChoice = prompt("Have to be one of these: Rock, Paper, Scissors").toUpperCase()
   }
-
   return humanChoice
 }
 
@@ -31,7 +30,6 @@ let computerScore = 0
 
 // write the logic to play a single round
 function playRound(getComputerChoiceFunc, getHumanChoiceFunc) {
-
   getComputerChoiceFunc()
   getHumanChoiceFunc()
   console.log("computer: ", computerChoice)
