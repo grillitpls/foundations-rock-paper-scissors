@@ -3,6 +3,8 @@ let humanChoice
 
 c
 
+c
+
 // get computer choice
 function getComputerChoice() {
   let random = Math.floor(Math.random() * 3)
