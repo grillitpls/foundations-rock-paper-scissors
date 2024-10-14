@@ -14,9 +14,7 @@ function getComputerChoice() {
   }
 }
 
-
 // get human choice
-
 function getHumanChoice() {
   humanChoice = prompt("Enter these to pick: Rock, Paper, Scissors").toUpperCase()
 
@@ -27,12 +25,9 @@ function getHumanChoice() {
   return humanChoice
 }
 
-
-
 // declare the player score variables
 let humanScore = 0
 let computerScore = 0
-
 
 // write the logic to play a single round
 function playRound(getComputerChoiceFunc, getHumanChoiceFunc) {
@@ -66,12 +61,10 @@ function playRound(getComputerChoiceFunc, getHumanChoiceFunc) {
   }
 }
 
-
 // write the logic to play the entire game
 let roundCounter
 
 function playGame(playRoundFunc, getComputerChoiceFunc, getHumanChoiceFunc) {
-  
   for(roundCounter = 1; roundCounter <= 5; roundCounter++) {
     console.log("Round ", roundCounter)
     playRoundFunc(getComputerChoiceFunc, getHumanChoiceFunc)
