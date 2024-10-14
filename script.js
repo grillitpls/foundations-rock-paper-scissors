@@ -78,7 +78,6 @@ function playGame(playRoundFunc, getComputerChoiceFunc, getHumanChoiceFunc) {
   }else {
     console.log("Game Over! You lose", humanScore, " - ", computerScore)
   }
-  
 }
 
 playGame(playRound, getComputerChoice, getHumanChoice)
