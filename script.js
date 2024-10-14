@@ -14,35 +14,27 @@ function getComputerChoice() {
   }
 }
 
-
 // get human choice
-
 function getHumanChoice() {
   humanChoice = prompt("Enter these to pick: Rock, Paper, Scissors").toUpperCase()
 
   if (humanChoice !== "ROCK" && humanChoice !== "PAPER" && humanChoice !== "SCISSORS") {
     humanChoice = prompt("Have to be one of these: Rock, Paper, Scissors").toUpperCase()
   }
-
   return humanChoice
 }
-
-
 
 // declare the player score variables
 let humanScore = 0
 let computerScore = 0
 
-
 // write the logic to play a single round
 function playRound(getComputerChoiceFunc, getHumanChoiceFunc) {
-
   getComputerChoiceFunc()
   getHumanChoiceFunc()
   console.log("computer: ", computerChoice)
   console.log("human: ", humanChoice)
  
-
   if (computerChoice === "ROCK" && humanChoice === "PAPER" ) {
     humanScore++
     console.log("You win! PAPER beats ROCK")
@@ -66,12 +58,10 @@ function playRound(getComputerChoiceFunc, getHumanChoiceFunc) {
   }
 }
 
-
 // write the logic to play the entire game
 let roundCounter
 
 function playGame(playRoundFunc, getComputerChoiceFunc, getHumanChoiceFunc) {
-  
   for(roundCounter = 1; roundCounter <= 5; roundCounter++) {
     console.log("Round ", roundCounter)
     playRoundFunc(getComputerChoiceFunc, getHumanChoiceFunc)
@@ -85,7 +75,6 @@ function playGame(playRoundFunc, getComputerChoiceFunc, getHumanChoiceFunc) {
   }else {
     console.log("Game Over! You lose", humanScore, " - ", computerScore)
   }
-  
 }
 
 playGame(playRound, getComputerChoice, getHumanChoice)
