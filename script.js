@@ -66,8 +66,6 @@ function playRound(getComputerChoiceFunc, getHumanChoiceFunc) {
   }
 }
 
-
-
 // write the logic to play the entire game
 let roundCounter
 
