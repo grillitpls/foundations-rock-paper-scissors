@@ -16,9 +16,7 @@ function getComputerChoice() {
 
 // get human choice
 function getHumanChoice() {
-  humanChoice = prompt("Enter one of these to pick: Rock, Paper, Scissors")
-  
-  humanChoice.toUpperCase()
+  humanChoice = prompt("Enter one of these to pick: Rock, Paper, Scissors").toUpperCase()
 
   if (humanChoice !== "ROCK" && humanChoice !== "PAPER" && humanChoice !== "SCISSORS") {
     humanChoice = prompt("Have to be one of these: Rock, Paper, Scissors").toUpperCase()
