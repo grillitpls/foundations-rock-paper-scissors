@@ -36,29 +36,37 @@ function playRound(getComputerChoiceFunc, getHumanChoiceFunc) {
 
   console.log("computer: ", computerChoice)
   console.log("human: ", humanChoice)
- 
-  if (computerChoice === "ROCK" && humanChoice === "PAPER" ) {
-    humanScore++
-    console.log("You win! PAPER beats ROCK")
-  } else if (computerChoice === humanChoice){
+
+  if (computerChoice === humanChoice) {
     console.log("Round Draw!")
-  } else if (computerChoice === "ROCK" && humanChoice === "SCISSORS") {
-    computerScore++
-    console.log("You lose! ROCK beats SCISSORS")
-  } else if (computerChoice === "PAPER" && humanChoice === "ROCK") {
-    computerScore++
-    console.log("You lose! PAPER beats ROCK")
-  } else if (computerChoice === "PAPER" && humanChoice === "SCISSORS") {
-    humanScore++
-    console.log("You win! SCISSORS beat PAPER")
-  } else if (computerChoice === "SCISSORS" && humanChoice === "ROCK") {
-    humanScore++
-    console.log("You win! ROCK beats SCISSORS")
-  } else {
-    computerScore++
-    console.log("You lose! SCISSORS beat PAPER")
+  }else if (computerChoice === "ROCK") {
+    if (humanChoice === "PAPER" ) {
+      humanScore++
+      console.log("You win! PAPER beats ROCK")
+    } else {
+      computerScore++
+      console.log("You lose! ROCK beats SCISSORS")
+    }
+  }else if (computerChoice === "PAPER") {
+    if (humanChoice === "ROCK") {
+      computerScore++
+      console.log("You lose! PAPER beats ROCK")
+    } else {
+      humanScore++
+      console.log("You win! SCISSORS beat PAPER")
+    }
+  }else if (computerChoice === "SCISSORS") {
+    if (humanChoice === "ROCK") {
+      humanScore++
+      console.log("You win! ROCK beats SCISSORS")
+    }else {
+      computerScore++
+      console.log("You lose! SCISSORS beat PAPER")
+    }
   }
 }
+
+
 
 // write the logic to play the entire game
 let roundCounter
