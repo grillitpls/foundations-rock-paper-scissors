@@ -16,21 +16,29 @@ function getComputerChoice() {
 
 // get human choice
 function getHumanChoice() {
+  // setTimeout(() => {
+  //   humanChoice = alert("Enter one of these to pick: Rock, Paper, Scissors")
+  // }, 10)
+
   humanChoice = prompt("Enter one of these to pick: Rock, Paper, Scissors")
 
-  if(humanChoice != null){
+  // console.log("yo", humanChoice)
+
+  if(humanChoice !== null  && humanChoice !== undefined){
     humanChoice = humanChoice.toUpperCase()
   }
 
   while (humanChoice !== "ROCK" && humanChoice !== "PAPER" && humanChoice !== "SCISSORS") {
-    humanChoice = prompt("Have to be one of these: Rock, Paper, Scissors")
+    // setTimeout(() => {
+    //   humanChoice = alert("Have to be one of these: Rock, Paper, Scissors")
+    // }, 20)
 
-    if(humanChoice != null){
+    humanChoice = prompt("Have to be one of these: Rock, Paper, Scissors")
+    
+    if(humanChoice != null && humanChoice !== undefined){
       humanChoice = humanChoice.toUpperCase()
     }
   }
-
-  // return humanChoice
 }
 
 // declare the player score variables
