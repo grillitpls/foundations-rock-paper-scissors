@@ -80,15 +80,21 @@ function playRound(humanChoice) {
     <p>Score: You ${humanScore}, Computer ${computerScore}</p>
   `
 
-  // Display game result when somebody reach 5
+  // Display game result when somebody reach 5, and reset
   if (computerScore === 5) {
     resultDisplay.innerHTML += `
-      <p>Game Over! Computer wins, ${computerScore} - ${humanScore}</p>
+      <p style="color:red">Game Over! Computer wins, ${computerScore} - ${humanScore}</p>
       `
+    roundCounter = 0
+    humanScore = 0
+    computerScore = 0
   } else if (humanScore === 5) {
     resultDisplay.innerHTML += `
-      <p>Game Over! You win, ${humanScore} - ${computerScore}</p>
+      <p style="color:red">Game Over! You win, ${humanScore} - ${computerScore}</p>
     `
+    roundCounter = 0
+    humanScore = 0
+    computerScore = 0
   }
 }
 
