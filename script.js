@@ -1,5 +1,13 @@
+// create references
+const rockPlayer = document.querySelector('.rock')
+const paperPlayer = document.querySelector('.paper')
+const scissorsPlayer = document.querySelector('.scissors')
+const resultDisplay = document.querySelector('#result')
 let computerChoice
 let humanChoice 
+let roundCounter = 0
+let humanScore = 0
+let computerScore = 0
 
 // get computer choice
 function getComputerChoice() {
@@ -14,94 +22,91 @@ function getComputerChoice() {
   }
 }
 
-// get human choice
-function getHumanChoice() {
-  // setTimeout(() => {
-  //   humanChoice = alert("Enter one of these to pick: Rock, Paper, Scissors")
-  // }, 10)
-
-  humanChoice = prompt("Enter one of these to pick: Rock, Paper, Scissors")
-
-  // console.log("yo", humanChoice)
-
-  if(humanChoice !== null  && humanChoice !== undefined){
-    humanChoice = humanChoice.toUpperCase()
-  }
-
-  while (humanChoice !== "ROCK" && humanChoice !== "PAPER" && humanChoice !== "SCISSORS") {
-    // setTimeout(() => {
-    //   humanChoice = alert("Have to be one of these: Rock, Paper, Scissors")
-    // }, 20)
-
-    humanChoice = prompt("Have to be one of these: Rock, Paper, Scissors")
-    
-    if(humanChoice != null && humanChoice !== undefined){
-      humanChoice = humanChoice.toUpperCase()
-    }
-  }
-}
-
-// declare the player score variables
-let humanScore = 0
-let computerScore = 0
-
 // write the logic to play a single round
-function playRound(getComputerChoiceFunc, getHumanChoiceFunc) {
-  getComputerChoiceFunc()
-  getHumanChoiceFunc()
+function playRound(humanChoice) {
+  // display round counter
+  roundCounter++;
+  resultDisplay.innerHTML += `<p>Round ${roundCounter}`
 
+  // get computer choice
+  getComputerChoice()
+
+  // display both choice
   console.log("computer: ", computerChoice)
   console.log("human: ", humanChoice)
-
+  resultDisplay.innerHTML += `
+    <p>computer: ${computerChoice}</p>
+    <p>human: ${humanChoice}</p>
+  `
+  
+  // decide whos win
   if (computerChoice === humanChoice) {
     console.log("Round Draw!")
+    resultDisplay.innerHTML += "<p>Round Draw!</p>"
   }else if (computerChoice === "ROCK") {
     if (humanChoice === "PAPER" ) {
       humanScore++
       console.log("You win! PAPER beats ROCK")
+      resultDisplay.innerHTML += "<p>You win! PAPER beats ROCK</p>"
     } else {
       computerScore++
       console.log("You lose! ROCK beats SCISSORS")
+      resultDisplay.innerHTML += "<p>You lose! ROCK beats SCISSORS</p>"
     }
   }else if (computerChoice === "PAPER") {
     if (humanChoice === "ROCK") {
       computerScore++
       console.log("You lose! PAPER beats ROCK")
+      resultDisplay.innerHTML += "<p>You lose! PAPER beats ROCK</p>"
     } else {
       humanScore++
       console.log("You win! SCISSORS beat PAPER")
+      resultDisplay.innerHTML += "<p>You win! SCISSORS beat PAPER</p>"
     }
   }else if (computerChoice === "SCISSORS") {
     if (humanChoice === "ROCK") {
       humanScore++
       console.log("You win! ROCK beats SCISSORS")
+      resultDisplay.innerHTML += "<p>You win! ROCK beats SCISSORS</p>"
     }else {
       computerScore++
       console.log("You lose! SCISSORS beat PAPER")
+      resultDisplay.innerHTML += "<p>You lose! SCISSORS beat PAPER</p>"
     }
   }
-}
 
-// write the logic to play the entire game
-let roundCounter
+  // Display round result
+  resultDisplay.innerHTML += `
+    <p>Score: You ${humanScore}, Computer ${computerScore}</p>
+  `
 
-function playGame(playRoundFunc, getComputerChoiceFunc, getHumanChoiceFunc) {
-  for(roundCounter = 1; roundCounter <= 5; roundCounter++) {
-    console.log("Round ", roundCounter)
-    
-    playRoundFunc(getComputerChoiceFunc, getHumanChoiceFunc)
-    
-    console.log("Score: You ", humanScore, ", Computer ", computerScore)
-  }
-  
-  if (humanScore === computerScore) {
-    console.log("Game Over! DRAW")
-    return
-  }else if (humanScore > computerScore) {
-    console.log("Game Over! You win", humanScore, " - ", computerScore)
-  }else {
-    console.log("Game Over! You lose", humanScore, " - ", computerScore)
+  // Display game result when somebody reach 5
+  if (computerScore === 5) {
+    resultDisplay.innerHTML += `
+      <p>Game Over! Computer wins, ${computerScore} - ${humanScore}</p>
+      `
+  } else if (humanScore === 5) {
+    resultDisplay.innerHTML += `
+      <p>Game Over! You win, ${humanScore} - ${computerScore}</p>
+    `
   }
 }
 
-playGame(playRound, getComputerChoice, getHumanChoice)
+// add listeners for buttons, and assign humanChoice base on human click
+rockPlayer.addEventListener('click', () => {
+  playRound(humanChoice = 'ROCK')
+})
+paperPlayer.addEventListener('click', () => {
+  playRound(humanChoice = 'PAPER')
+})
+scissorsPlayer.addEventListener('click', () => {
+  playRound(humanChoice = 'SCISSORS')
+})
+
+
+
+
+
+
+
+
